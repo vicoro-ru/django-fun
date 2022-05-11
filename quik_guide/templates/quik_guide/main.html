@@ -7,6 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>News Blog</h1>
+    {% for article in articles %}
+        <h2>{{ article.headline }}</h1>
+        <h4>{{ article.pub_date|date:'D m Y' }} {{ article.reporter }}</h4>
+        <p>{{ article.content }}</p>
+    {% endfor %}
 </body>
 </html>

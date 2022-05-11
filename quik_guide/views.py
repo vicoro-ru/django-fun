@@ -4,8 +4,8 @@ from .models import Article
 # Create your views here.
 
 def main(request):
-    return render(request, 'quik_guide/main.html', None)
+    a_list = Article.objects.all()
+    return render(request, 'quik_guide/main.html', {'articles': a_list})
 
 def news(request):
-    a_list = Article.objects.all()
-    return render(request, 'quik_guide/news.html', a_list)
+    pass
