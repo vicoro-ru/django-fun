@@ -10,7 +10,7 @@ class Reporter(models.Model):
         return self.full_name
 
 class Article(models.Model):
-    pub_date = models.DateField()
+    pub_date = models.DateTimeField()
     headline = models.CharField(max_length=100)
     content = models.TextField()
     reporter = models.ForeignKey(Reporter, on_delete=models.CASCADE)

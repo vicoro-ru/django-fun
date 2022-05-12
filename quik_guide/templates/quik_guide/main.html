@@ -1,3 +1,4 @@
+{% load extratags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,11 +8,23 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>News Blog</h1>
-    {% for article in articles %}
-        <h2>{{ article.headline }}</h1>
-        <h4>{{ article.pub_date|date:'D m Y' }} {{ article.reporter }}</h4>
-        <p>{{ article.content }}</p>
+    <h1>Новостной блог</h1>
+    {% regroup articles by pub_date  as datearticles%}
+    {% for datearticle in datearticles %}
+        {% now "DATE_FORMAT" as currentdate %}
+        {% if datearticle.grouper|date:'DATE_FORMAT'  == currentdate %}
+            {% comment %}
+                Выводит новости за сегодняшний день
+            {% endcomment %}
+            <h4>За сегодня</h4>
+            {% for article in datearticle.list %}
+                <h2>{{ article.headline }}</h1>
+                <h5>{{ article.pub_date|date:'G:i' }} {{ article.reporter }}</h5>
+                <p>{{ article.content }}</p>
+            {% endfor %}
+        {% else %}
+            <h4>Ранее</h4>
+        {% endif %}
     {% endfor %}
 </body>
 </html>
