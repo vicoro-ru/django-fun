@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'quik_guide',
+    'quik_guide.apps.QuikGuideConfig',
+    'polls.apps.PollsConfig',
 ]
 
 MIDDLEWARE = [

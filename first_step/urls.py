@@ -19,5 +19,6 @@ from django.urls import path, re_path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'^quik-guide', include('quik_guide.urls')),
+    re_path(r'^quik-guide/', include('quik_guide.urls')),
+    re_path(r'^polls/', include('polls.urls')),
 ]

@@ -18,13 +18,16 @@
             {% endcomment %}
             <h4>За сегодня</h4>
             {% for article in datearticle.list %}
-                <h2>{{ article.headline }}</h1>
+                <h2>{{ article.headline|title }}</h1>
                 <h5>{{ article.pub_date|date:'G:i' }} {{ article.reporter }}</h5>
                 <p>{{ article.content }}</p>
-                <p>test</p>
             {% endfor %}
         {% else %}
-            <h4>Ранее</h4>
+            {% for article in datearticle.list %}
+                <h2>{{ article.headline|title }}</h1>
+                <h5>{{ article.pub_date|date:'j F Y' }} {{ article.reporter|title }}</h5>
+                <p>{{ article.content }}</p>
+            {% endfor %}
         {% endif %}
     {% endfor %}
 </body>
