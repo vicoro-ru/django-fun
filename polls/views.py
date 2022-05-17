@@ -2,7 +2,7 @@
 from re import template
 from django.http import HttpResponse, Http404
 from django.template import loader
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Question
 
 # Create your views here.
@@ -15,12 +15,14 @@ def index(request):
 
 
 def detail(request, question_id):
-    try:
-        question = Question.objects.get(id=question_id)
-    except Question.DoesNotExist:
-        raise Http404('Заданный опрос не найден')
-    content = {'content': question}
-    return render(request, 'polls/detail.html', content)
+#    try:
+#        question = Question.objects.get(id=question_id)
+#    except Question.DoesNotExist:
+#        raise Http404('Заданный опрос не найден')
+#    content = {'content': question}
+#    return render(request, 'polls/detail.html', content)
+    question = get_object_or_404(Question, id=question_id)
+    return render(request, 'polls/detail.html', {'question': question})
 
 def result(request, question_id):
     message_text = 'Вы просматриваете результаты опроса %s'
