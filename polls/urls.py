@@ -1,6 +1,7 @@
 from django.urls import re_path, include
 from . import views
 
+app_name = 'polls'
 urlpatterns = [
     re_path(r'^$', views.index, name='index'),
     re_path(r'^(?P<question_id>[\d]+)/', include([
