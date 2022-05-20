@@ -1,6 +1,6 @@
 {% extends 'quik_guide/base.html' %}
 
-{% block title %}{{ content.question_text|truncatechars:'10' }}{% endblock title %}
+{% block title %}{{ question.question_text|truncatechars:'10' }}{% endblock title %}
 
 {% block content %}
 {% comment %}
@@ -13,6 +13,17 @@
 {% endcomment %}
 <form action="{% url 'polls:vote' question.id %}" method="post">
     {% csrf_token %}
+    <fieldset>
+        <legend>
+            <h1>{{ question.question_text }}</h1>
+        </legend>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        {% for choice in question.choise_set.all %}
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+            <label for="choice{{ forloop.counter }}">{{ choice.choise_text }}</label><br>
+        {% endfor %}
+        <label for=""></label>
+    </fieldset>
     <input type="submit" value="Vote">
 </form>
 {% endblock content %}
