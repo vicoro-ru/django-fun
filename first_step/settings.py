@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'quik_guide.apps.QuikGuideConfig',
     'polls.apps.PollsConfig',
+    'class_view.apps.ClassViewConfig'
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,13 @@
+{% extends 'class_view/base.html' %}
+
+{% block content %}
+    <h1>Question List</h1>
+    {{ question }}
+    <ul>
+    {% for one_q in question_list.all %}
+            <li>{{ one_q }} Опубликовано: {{ one_q.pub_date }}</li>
+    {% endfor %}
+    </ul>
+    <h1>Head request</h1>
+    <p>{{ head }}</p>
+{% endblock content %}
