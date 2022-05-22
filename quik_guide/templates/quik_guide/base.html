@@ -8,9 +8,9 @@
     <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
-    {% comment %}
-        <img src="{% static 'quik_guide/logo.png' %}" alt="Logo">
-    {% endcomment %}
+    <a href="{% url 'polls:index' %}">
+        <img src="{% static 'quik_guide/logo.png' %}" alt="Logo">    
+    </a>
     {% block content %}{% endblock content %}
 </body>
 </html>

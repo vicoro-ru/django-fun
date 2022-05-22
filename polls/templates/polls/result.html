@@ -1,0 +1,13 @@
+{% extends 'quik_guide/base.html' %}
+
+{% block title %}Результаты голосования{% endblock title %}
+
+{% block content %}
+    <h1>На вопрос: {{ question.question_text }}</h1>
+    <ul>
+        {% for choise in question.choise_set.all %}
+            <li>{{ choise.choise_text }} Проголосовало {{ choise.votes }} человек</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'polls:vote' question.id %}">Проголосовать снова?</a>
+{% endblock content %}
